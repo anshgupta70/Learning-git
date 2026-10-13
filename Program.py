@@ -14,7 +14,11 @@ while True:
               print("Exiting ATM....")
               break   
           elif n == 1:
-              print("Current Balance = ",balance)
+              password = int(input("Enter Pin"))
+              if password ==9926:
+                 print("Current Balance = ",balance)
+              else:
+                 print("Wrong PIN Entered!")   
           elif n == 2:
               new_amount = int(input("Enter Amount: "))
               balance = balance + new_amount

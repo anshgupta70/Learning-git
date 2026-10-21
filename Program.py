@@ -1,17 +1,18 @@
 print("Welcome to ATM")
-conter = 0
 balance = 100000
 correct_pin = "9926"
-def valid_attempts(conter):
-    while conter < 3:
+
+def valid_attempts(correct_pin):
+    counter = 0
+    while counter < 3:
         pin = input("Enter pin ")
         if correct_pin == pin:
             return True
-        else:
-            conter += 1
+        
+        counter += 1
     return False    
 
-if  not valid_attempts(0):
+if  not valid_attempts(correct_pin):
     print("Login Failed Access Denied!")
     
 else:

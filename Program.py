@@ -1,6 +1,35 @@
-print("Welcome to ATM")
 balance = 100000
+print("Welcome to ATM")
 correct_pin = "9926"
+def check_balance():    
+    print("Current Balance:",balance)
+
+
+def deposit(new_amount):
+    global balance
+    if new_amount <= 0:
+        print("The Amount Should be greater than Zero !")
+        return
+
+    balance = balance + new_amount
+
+    print(f"₹{new_amount} deposited successfully.")
+    print(f"Current balance: ₹{balance}") 
+
+def withdraw(amount):
+    global balance
+
+    if amount <= 0:
+        print("Amount Should be greater than zero  !")
+        return
+
+    if amount <= balance:
+        balance -= amount
+        print(f"₹{amount} withdrawn successfully.")
+        print(f"Remaining balance: ₹{balance}")
+    else:
+        print("Insufficient balance.")
+
 
 def valid_attempts(correct_pin):
     counter = 0
@@ -35,26 +64,17 @@ else:
                   print("Exited ATM")
                   break   
               elif n == 1: 
-                  print("Current Balance:", balance)  
+                   check_balance() 
               elif n == 2:
                   try:
                      new_amount = int(input("Enter Amount: "))
                   except ValueError:
                       print("please Enter a valid Amount !")
                       continue
-                  if new_amount <= 0:
-                      print("Amount Should be greater than Zero !")
-                  else:    
-                      balance = balance + new_amount
+                  deposit(new_amount)
               elif n == 3:
                   new_draw = int(input("Enter Amount: "))
-                  if new_draw <= 0:
-                      print("Amount Should be greater than Zero !")
-                  elif new_draw > balance:
-                      print("There is not enough Balance !")    
-                  else:    
-                     balance = balance - new_draw
-              else:
-                  print("invalid Input !") 
+                  withdraw(new_draw)
+              
           else:
               print("Please Enter Appropriate choice")        

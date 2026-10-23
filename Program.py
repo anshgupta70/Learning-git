@@ -39,6 +39,7 @@ def valid_attempts(correct_pin):
             return True
         
         counter += 1
+        print(f"Incorrect PIN Attempt left: {3 - counter}")
     return False    
 
 if  not valid_attempts(correct_pin):
@@ -73,7 +74,11 @@ else:
                       continue
                   deposit(new_amount)
               elif n == 3:
-                  new_draw = int(input("Enter Amount: "))
+                  try:
+                     new_draw = int(input("Enter Amount: "))
+                  except:
+                     print("Please Enter a valid input !")   
+                     continue
                   withdraw(new_draw)
               
           else:
